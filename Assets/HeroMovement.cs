@@ -5,6 +5,9 @@ public class HeroMovement : MonoBehaviour {
 
     public float moveSpeed = 2.0f;
 
+    public Rigidbody2D orb;
+    float orbSpeed = 20f;
+
     bool left, right, up, down;
     Animator animator;
 
@@ -15,6 +18,33 @@ public class HeroMovement : MonoBehaviour {
         animator = GetComponent<Animator>();
 	}
 	
+    void Update()
+    {
+        if(Input.GetButtonDown("Fire1"))
+        {
+            Rigidbody2D orbInstance = Instantiate(orb, transform.position, Quaternion.identity) as Rigidbody2D;
+
+            if (right)
+            {
+                orbInstance.velocity = new Vector2(orbSpeed, 0f);
+            }
+            if (left)
+            {
+                orbInstance.velocity = new Vector2(-orbSpeed, 0f);
+            }
+            if (up)
+            {
+                orbInstance.velocity = new Vector2(0f, orbSpeed);
+            }
+            if (down)
+            {
+                orbInstance.velocity = new Vector2(0f, -orbSpeed);
+            }
+
+        }
+
+    }
+
 	void FixedUpdate () {
         MoveCharacter();	
 	}

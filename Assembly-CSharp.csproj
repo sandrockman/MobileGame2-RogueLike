@@ -45,7 +45,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\EnemyMovement.cs" />
      <Compile Include="Assets\HeroMovement.cs" />
+     <Compile Include="Assets\MoveOrb.cs" />
+     <Compile Include="Assets\SpawnEnemy.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
