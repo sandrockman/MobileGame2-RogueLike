@@ -22,25 +22,18 @@ public class HeroMovement : MonoBehaviour {
     {
         if(Input.GetButtonDown("Fire1"))
         {
-            Rigidbody2D orbInstance = Instantiate(orb, transform.position, Quaternion.identity) as Rigidbody2D;
+            FireAway();
+        }
 
-            if (right)
-            {
-                orbInstance.velocity = new Vector2(orbSpeed, 0f);
-            }
-            if (left)
-            {
-                orbInstance.velocity = new Vector2(-orbSpeed, 0f);
-            }
-            if (up)
-            {
-                orbInstance.velocity = new Vector2(0f, orbSpeed);
-            }
-            if (down)
-            {
-                orbInstance.velocity = new Vector2(0f, -orbSpeed);
-            }
+        if (Input.touchCount <= 0)
+            return;
 
+        foreach(Touch next in Input.touches)
+        {
+            if(next.phase == TouchPhase.Began)
+            {
+                FireAway();
+            }
         }
 
     }
@@ -108,5 +101,27 @@ public class HeroMovement : MonoBehaviour {
 
         }
 
+    }
+
+    void FireAway()
+    {
+        Rigidbody2D orbInstance = Instantiate(orb, transform.position, Quaternion.identity) as Rigidbody2D;
+
+        if (right)
+        {
+            orbInstance.velocity = new Vector2(orbSpeed, 0f);
+        }
+        if (left)
+        {
+            orbInstance.velocity = new Vector2(-orbSpeed, 0f);
+        }
+        if (up)
+        {
+            orbInstance.velocity = new Vector2(0f, orbSpeed);
+        }
+        if (down)
+        {
+            orbInstance.velocity = new Vector2(0f, -orbSpeed);
+        }
     }
 }

@@ -56,7 +56,7 @@ public class EnemyMovement : MonoBehaviour
 
                 transform.Translate(Vector3.down * enemySpeed * Time.deltaTime);
             }
-            else
+            else //enemy is below player
             {
                 enemyAnimator.SetBool("EnemyDown", false);
                 enemyAnimator.SetBool("EnemyUp", true);
