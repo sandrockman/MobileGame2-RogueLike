@@ -45,11 +45,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Resources\ParseCDCatalog.cs" />
+     <Compile Include="Assets\Resources\ParseXML.cs" />
      <Compile Include="Assets\Scripts\EnemyMovement.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\HeroMovement.cs" />
      <Compile Include="Assets\Scripts\OrbDestroy.cs" />
      <Compile Include="Assets\Scripts\SpawnEnemy.cs" />
+     <None Include="Assets\Resources\CDCatalog.xml" />
+     <None Include="Assets\Resources\productListing.xml" />
      <None Include="Assets\kenneyrpgpack\license.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

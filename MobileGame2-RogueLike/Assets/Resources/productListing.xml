@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<productListing title = "ABC Products">
+	<product>
+		<name>Product One</name>
+		<description>Product One is an exciting new widget that will simplify your life</description>
+		<price>$19.95</price>
+		<shipping>$2.95</shipping>
+	</product>
+	<product>
+		<name>Product Two</name>
+		<description>Project Two is an exciting new widget that will make you jump up and down</description>
+		<price>$29.95</price>
+		<shipping>$5.95</shipping>
+	</product>
+	<product>
+		<name>Product Three</name>
+		<description>Product Three is better than Product One and Product Two combined! It is really good as we say it is -- or your money back</description>
+		<price>$39.95</price>
+		<shipping>$5.95</shipping>
+	</product>
+</productListing>
