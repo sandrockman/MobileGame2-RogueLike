@@ -23,8 +23,8 @@ public class LoadTiles : MonoBehaviour {
         xmlDoc.LoadXml(mapInformation.text);
 
         //Maneuver the camera
-        Camera.main.transform.position = new Vector3(9.9f, -9.9f, 10f);
-        Camera.main.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+        //Camera.main.transform.position = new Vector3(9.9f, -9.9f, 10f);
+        //Camera.main.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
 
         XmlNodeList layerNames = xmlDoc.GetElementsByTagName("layer");
         Debug.Log(layerNames.Count);

@@ -87,6 +87,7 @@ public class OpenMenuScript : MonoBehaviour {
 
     void EnableMenu()
     {
+        Time.timeScale = 0;
         menu.enabled = true;
         menuUp = true;
     }
@@ -94,5 +95,6 @@ public class OpenMenuScript : MonoBehaviour {
     {
         menu.enabled = false;
         menuUp = false;
+        Time.timeScale = 1;
     }
 }
