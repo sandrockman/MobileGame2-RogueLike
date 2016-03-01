@@ -56,7 +56,8 @@ public class LoadTiles : MonoBehaviour {
                 XmlNode tempNode = layerInfo.SelectSingleNode("data");
 
                 int mapLocVert, mapLocHorz;
-                mapLocHorz = mapLocVert = 0;
+                mapLocHorz = 0;
+                mapLocVert = layerHeight;
 
                 foreach (XmlNode tile in tempNode.SelectNodes("tile"))
                 {
@@ -86,19 +87,23 @@ public class LoadTiles : MonoBehaviour {
                     if (mapLocHorz % layerWidth == 0)
                     {
                         //incr. our vertical location.
-                        mapLocVert++;
+                        mapLocVert--;
                         //reset our horz. location
                         mapLocHorz = 0;
                     }
                 }
             }
+
+            //*
+
             if (layerInfo.Attributes["name"].Value == "Obstacles")
             {
                 //Pull out the data node
                 XmlNode tempNode = layerInfo.SelectSingleNode("data");
 
                 int mapLocVert, mapLocHorz;
-                mapLocHorz = mapLocVert = 0;
+                mapLocHorz = 0;
+                mapLocVert = layerHeight;
 
                 foreach (XmlNode tile in tempNode.SelectNodes("tile"))
                 {
@@ -128,7 +133,7 @@ public class LoadTiles : MonoBehaviour {
                     if (mapLocHorz % layerWidth == 0)
                     {
                         //incr. our vertical location.
-                        mapLocVert++;
+                        mapLocVert--;
                         //reset our horz. location
                         mapLocHorz = 0;
                     }
@@ -140,7 +145,8 @@ public class LoadTiles : MonoBehaviour {
                 XmlNode tempNode = layerInfo.SelectSingleNode("data");
 
                 int mapLocVert, mapLocHorz;
-                mapLocHorz = mapLocVert = 0;
+                mapLocHorz = 0;
+                mapLocVert = layerHeight;
 
                 foreach (XmlNode tile in tempNode.SelectNodes("tile"))
                 {
@@ -170,7 +176,7 @@ public class LoadTiles : MonoBehaviour {
                     if (mapLocHorz % layerWidth == 0)
                     {
                         //incr. our vertical location.
-                        mapLocVert++;
+                        mapLocVert--;
                         //reset our horz. location
                         mapLocHorz = 0;
                     }
@@ -182,7 +188,8 @@ public class LoadTiles : MonoBehaviour {
                 XmlNode tempNode = layerInfo.SelectSingleNode("data");
 
                 int mapLocVert, mapLocHorz;
-                mapLocHorz = mapLocVert = 0;
+                mapLocHorz = 0;
+                mapLocVert = layerHeight;
 
                 foreach (XmlNode tile in tempNode.SelectNodes("tile"))
                 {
@@ -212,7 +219,7 @@ public class LoadTiles : MonoBehaviour {
                     if (mapLocHorz % layerWidth == 0)
                     {
                         //incr. our vertical location.
-                        mapLocVert++;
+                        mapLocVert--;
                         //reset our horz. location
                         mapLocHorz = 0;
                     }
@@ -224,7 +231,8 @@ public class LoadTiles : MonoBehaviour {
                 XmlNode tempNode = layerInfo.SelectSingleNode("data");
 
                 int mapLocVert, mapLocHorz;
-                mapLocHorz = mapLocVert = 0;
+                mapLocHorz = 0;
+                mapLocVert = layerHeight;
 
                 foreach (XmlNode tile in tempNode.SelectNodes("tile"))
                 {
@@ -254,12 +262,14 @@ public class LoadTiles : MonoBehaviour {
                     if (mapLocHorz % layerWidth == 0)
                     {
                         //incr. our vertical location.
-                        mapLocVert++;
+                        mapLocVert--;
                         //reset our horz. location
                         mapLocHorz = 0;
                     }
                 }
             }
+
+            //*/
 
         }
 
