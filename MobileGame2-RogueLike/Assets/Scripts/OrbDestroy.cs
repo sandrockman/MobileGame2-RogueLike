@@ -14,6 +14,14 @@ public class OrbDestroy : MonoBehaviour {
 	    
 	}
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == "Obstacle")
+        {
+            Destroy(gameObject);
+        }
+    }
+
     IEnumerator Boom()
     {
         yield return new WaitForSeconds(destroyTime);

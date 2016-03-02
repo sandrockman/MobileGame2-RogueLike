@@ -104,9 +104,9 @@ public class HeroMovement : MonoBehaviour {
 
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.name == "Enemy(Clone)")
+        if (other.gameObject.tag == "Enemy")
         {
             Time.timeScale = 0f;
             Destroy(gameObject);

@@ -5,23 +5,45 @@ using System.Xml;
 public class LoadTiles : MonoBehaviour {
 
     //holds the .xml file
-    public TextAsset mapInformation;
+    public TextAsset[] mapInformation;
 
     //a temporary tile object
     public GameObject tempCube;
 
     private Sprite[] sprites;
+    //private [] effects;
+    private int[] id;
+
+    GameObject tileParent;
+
+    void Start()
+    {
+        tileParent = Instantiate(new GameObject(), Vector3.zero, Quaternion.identity) as GameObject;
+        LoadMap(Random.Range(0, mapInformation.Length));
+    }
 
     // Use this for initialization
-    void Start () {
+    public void LoadMap(int mapNumber) {
         //Load Sprites into the sprite array
         //sprites = Resources.Load("roguelikeSheet_magenta") as Sprite;
         sprites = Resources.LoadAll<Sprite>("RPGpack_sheet");
         Debug.Log(sprites.Length);
 
         XmlDocument xmlDoc = new XmlDocument();
-        xmlDoc.LoadXml(mapInformation.text);
+        //xmlDoc.LoadXml(mapInformation.text);
 
+        switch (mapNumber)
+        {
+            case 0:
+                xmlDoc.LoadXml(mapInformation[0].text);
+                break;
+            case 1:
+                xmlDoc.LoadXml(mapInformation[1].text);
+                break;
+            //case 2:
+            default:
+                break;
+        }
         //Maneuver the camera
         //Camera.main.transform.position = new Vector3(9.9f, -9.9f, 10f);
         //Camera.main.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
@@ -112,8 +134,13 @@ public class LoadTiles : MonoBehaviour {
                     if (spriteValue > 0)
                     {
                         GameObject tempSprite = new GameObject("test");
+                        tempSprite.tag = "Obstacle";
                         SpriteRenderer renderer = tempSprite.AddComponent<SpriteRenderer>();
                         renderer.sprite = sprites[spriteValue - 1];
+                        BoxCollider2D collider = tempSprite.AddComponent<BoxCollider2D>();
+                        Rigidbody2D rb = tempSprite.AddComponent<Rigidbody2D>();
+                        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                        rb.gravityScale = 0;
 
                         float locationX = tileWidth * mapLocHorz;
                         float locationY = tileHeight * mapLocVert;
@@ -200,6 +227,12 @@ public class LoadTiles : MonoBehaviour {
                         GameObject tempSprite = new GameObject("test");
                         SpriteRenderer renderer = tempSprite.AddComponent<SpriteRenderer>();
                         renderer.sprite = sprites[spriteValue - 1];
+                        BoxCollider2D collider = tempSprite.AddComponent<BoxCollider2D>();
+                        Rigidbody2D rb = tempSprite.AddComponent<Rigidbody2D>();
+                        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                        rb.gravityScale = 0;
+
+                        tempSprite.AddComponent<ObjectInteractScript>();
 
                         float locationX = tileWidth * mapLocHorz;
                         float locationY = tileHeight * mapLocVert;
@@ -279,4 +312,12 @@ public class LoadTiles : MonoBehaviour {
     void Update () {
 	
 	}
+
+    /*
+    void addEffect(int gid, GameObject obj)
+    {
+
+        //foreach(effect)
+    }
+    //*/
 }
