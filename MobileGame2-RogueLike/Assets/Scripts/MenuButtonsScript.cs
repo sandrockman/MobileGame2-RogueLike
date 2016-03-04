@@ -1,10 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MoveOrb : MonoBehaviour {
-
-    Rigidbody2D orb;
-    float orbSpeedPos = 20f;
+public class MenuButtonsScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
