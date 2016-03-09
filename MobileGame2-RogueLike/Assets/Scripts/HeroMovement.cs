@@ -11,6 +11,11 @@ public class HeroMovement : MonoBehaviour {
     bool left, right, up, down;
     Animator animator;
 
+    private Vector2 vectorStart;
+    private Vector2 vectorEnd;
+    private float swipeMag;
+    public float swipeComfortZone = 5f;
+
 	// Use this for initialization
 	void Start () {
 
@@ -35,12 +40,15 @@ public class HeroMovement : MonoBehaviour {
             {
                 FireAway();
             }
-        }
+
+            
+        }//end foreach touch input
 
     }
 
 	void FixedUpdate () {
-        MoveCharacter();	
+        MoveCharacter();
+        TouchMove();
 	}
 
     void MoveCharacter()
@@ -102,6 +110,54 @@ public class HeroMovement : MonoBehaviour {
 
         }
 
+    }
+
+    void TouchMove()
+    {
+        if (Input.touchCount == 1)
+        {
+            FireAway();
+            if (Input.GetTouch(0).phase == TouchPhase.Began)
+            {
+                vectorStart = Input.GetTouch(0).position;
+            }
+            if (Input.GetTouch(0).phase == TouchPhase.Ended)
+            {
+                vectorEnd = Input.GetTouch(0).position;
+                Vector2 tempVector = vectorEnd - vectorStart;
+                swipeMag = tempVector.magnitude;
+
+                if ((swipeMag > 0 && swipeMag > swipeComfortZone) ||
+                    (swipeMag < 0 && -swipeMag > swipeComfortZone))
+                {
+                    //Debug.Log("movement swipe");
+                    if (tempVector.y >= tempVector.x)
+                    {
+                        Debug.Log("From Right or Bottom.");
+                        if (tempVector.y > -(tempVector.x))
+                        {
+                            Debug.Log("From Bottom.");
+                        }
+                        else
+                        {
+                            Debug.Log("From Right.");
+                        }
+                    }
+                    else
+                    {
+                        Debug.Log("From Left or Top.");
+                        if (tempVector.y > -(tempVector.x))
+                        {
+                            Debug.Log("From Left.");
+                        }
+                        else
+                        {
+                            Debug.Log("From Top.");
+                        }
+                    }//end direction check 
+                }//end move swipe check
+            }//end swipe check
+        }//end individual touch check
     }
 
     void OnCollisionEnter2D(Collision2D other)

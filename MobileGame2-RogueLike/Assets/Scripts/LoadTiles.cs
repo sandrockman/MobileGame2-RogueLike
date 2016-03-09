@@ -11,6 +11,7 @@ public class LoadTiles : MonoBehaviour {
     public GameObject tempCube;
 
     private Sprite[] sprites;
+    public int spriteMapID;
     //private [] effects;
     private int[] id;
 
@@ -19,14 +20,29 @@ public class LoadTiles : MonoBehaviour {
     void Start()
     {
         tileParent = Instantiate(new GameObject(), Vector3.zero, Quaternion.identity) as GameObject;
-        LoadMap(Random.Range(0, mapInformation.Length));
+        spriteMapID = Random.Range(0, mapInformation.Length);
+        LoadMap(spriteMapID);
+
     }
 
     // Use this for initialization
     public void LoadMap(int mapNumber) {
         //Load Sprites into the sprite array
         //sprites = Resources.Load("roguelikeSheet_magenta") as Sprite;
-        sprites = Resources.LoadAll<Sprite>("RPGpack_sheet");
+        switch(spriteMapID)
+        {
+            case 0:
+            case 1:
+                sprites = Resources.LoadAll<Sprite>("RPGpack_sheet");
+                break;
+            case 2:
+                sprites = Resources.LoadAll<Sprite>("roguelikeDungeon_transparent");
+                break;
+            default:
+                Debug.Log("Error with random number generator.");
+                break;
+        }
+        //sprites = Resources.LoadAll<Sprite>("RPGpack_sheet");
         Debug.Log(sprites.Length);
 
         XmlDocument xmlDoc = new XmlDocument();
@@ -40,7 +56,9 @@ public class LoadTiles : MonoBehaviour {
             case 1:
                 xmlDoc.LoadXml(mapInformation[1].text);
                 break;
-            //case 2:
+            case 2:
+                xmlDoc.LoadXml(mapInformation[2].text);
+                break;
             default:
                 break;
         }
@@ -56,11 +74,11 @@ public class LoadTiles : MonoBehaviour {
             //Debug.Log(node.Attributes.GetNamedItem("name").InnerText);
             //Debug.Log(node.Attributes["name"].Value);
         }
-
+        //Debug.Log(xmlDoc.SelectSingleNode("xml").Attributes["version"].InnerText);
         XmlNode tileSetInfo = xmlDoc.SelectSingleNode("map").SelectSingleNode("tileset");
 
-        float tileWidth = int.Parse(tileSetInfo.Attributes["tilewidth"].Value)/ (float)100;
-        float tileHeight = int.Parse(tileSetInfo.Attributes["tileheight"].Value)/ (float)100;
+        float tileWidth = int.Parse(tileSetInfo.Attributes["tilewidth"].Value)/ sprites[0].pixelsPerUnit;
+        float tileHeight = int.Parse(tileSetInfo.Attributes["tileheight"].Value)/ sprites[0].pixelsPerUnit;
         //Debug.Log(tileWidth);
         //Debug.Log(int.Parse(tileSetInfo.Attributes["tilewidth"].Value));
         //float tileWidth = float.Parse(tileSetInfo.Attributes["tilewidth"].Value);
