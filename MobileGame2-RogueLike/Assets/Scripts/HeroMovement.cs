@@ -3,6 +3,8 @@ using System.Collections;
 
 public class HeroMovement : MonoBehaviour {
 
+    public enum SwipeMove {LEFT, RIGHT, UP, DOWN};
+
     public float moveSpeed = 2.0f;
 
     public GameObject orb;
@@ -137,10 +139,12 @@ public class HeroMovement : MonoBehaviour {
                         if (tempVector.y > -(tempVector.x))
                         {
                             Debug.Log("From Bottom.");
+                            RunInSwipe(SwipeMove.UP);
                         }
                         else
                         {
                             Debug.Log("From Right.");
+                            RunInSwipe(SwipeMove.LEFT);
                         }
                     }
                     else
@@ -149,10 +153,12 @@ public class HeroMovement : MonoBehaviour {
                         if (tempVector.y > -(tempVector.x))
                         {
                             Debug.Log("From Left.");
+                            RunInSwipe(SwipeMove.RIGHT);
                         }
                         else
                         {
                             Debug.Log("From Top.");
+                            RunInSwipe(SwipeMove.DOWN);
                         }
                     }//end direction check 
                 }//end move swipe check
@@ -193,6 +199,60 @@ public class HeroMovement : MonoBehaviour {
         {
             orbRigidbody.velocity = new Vector2(0f, -orbSpeed);
 
+        }
+    }
+
+    void RunInSwipe(SwipeMove moveDir)
+    {
+        switch(moveDir)
+        {
+            case SwipeMove.DOWN:
+                animator.SetBool("Left", false);
+                animator.SetBool("Right", false);
+                animator.SetBool("Up", false);
+                animator.SetBool("Down", true);
+
+                left = up = right = false;
+                down = true;
+
+                transform.Translate(Vector3.down * moveSpeed * Time.deltaTime);
+                break;
+            case SwipeMove.LEFT:
+                animator.SetBool("Left", true);
+                animator.SetBool("Right", false);
+                animator.SetBool("Up", false);
+                animator.SetBool("Down", false);
+
+                right = up = down = false;
+                left = true;
+
+                transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
+                break;
+            case SwipeMove.RIGHT:
+                animator.SetBool("Left", false);
+                animator.SetBool("Right", true);
+                animator.SetBool("Up", false);
+                animator.SetBool("Down", false);
+
+                left = up = down = false;
+                right = true;
+
+                transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+                break;
+            case SwipeMove.UP:
+                animator.SetBool("Left", false);
+                animator.SetBool("Right", false);
+                animator.SetBool("Up", true);
+                animator.SetBool("Down", false);
+
+                left = right = down = false;
+                up = true;
+
+                transform.Translate(Vector3.up * moveSpeed * Time.deltaTime);
+                break;
+            default:
+                Debug.Log("Error in Swipe Run.");
+                break;
         }
     }
 }

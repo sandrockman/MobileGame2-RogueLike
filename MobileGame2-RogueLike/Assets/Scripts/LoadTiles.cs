@@ -27,6 +27,8 @@ public class LoadTiles : MonoBehaviour {
 
     // Use this for initialization
     public void LoadMap(int mapNumber) {
+        //init. tile index offset for pulling tiles.
+        int tileOffset = 1;
         //Load Sprites into the sprite array
         //sprites = Resources.Load("roguelikeSheet_magenta") as Sprite;
         switch(spriteMapID)
@@ -36,12 +38,15 @@ public class LoadTiles : MonoBehaviour {
                 sprites = Resources.LoadAll<Sprite>("RPGpack_sheet");
                 break;
             case 2:
+                //tileOffset = 0;
                 sprites = Resources.LoadAll<Sprite>("roguelikeDungeon_transparent");
                 break;
             default:
                 Debug.Log("Error with random number generator.");
                 break;
         }
+        //Debug.Log("tile offset: " + tileOffset);
+
         //sprites = Resources.LoadAll<Sprite>("RPGpack_sheet");
         Debug.Log(sprites.Length);
 
@@ -107,7 +112,7 @@ public class LoadTiles : MonoBehaviour {
                     {
                         GameObject tempSprite = new GameObject("test");
                         SpriteRenderer renderer = tempSprite.AddComponent<SpriteRenderer>();
-                        renderer.sprite = sprites[spriteValue - 1];
+                        renderer.sprite = sprites[spriteValue - tileOffset];
 
                         float locationX = tileWidth * mapLocHorz;
                         float locationY = tileHeight * mapLocVert;
@@ -201,7 +206,7 @@ public class LoadTiles : MonoBehaviour {
                     {
                         GameObject tempSprite = new GameObject("test");
                         SpriteRenderer renderer = tempSprite.AddComponent<SpriteRenderer>();
-                        renderer.sprite = sprites[spriteValue - 1];
+                        renderer.sprite = sprites[spriteValue - tileOffset];
 
                         float locationX = tileWidth * mapLocHorz;
                         float locationY = tileHeight * mapLocVert;
@@ -244,7 +249,7 @@ public class LoadTiles : MonoBehaviour {
                     {
                         GameObject tempSprite = new GameObject("test");
                         SpriteRenderer renderer = tempSprite.AddComponent<SpriteRenderer>();
-                        renderer.sprite = sprites[spriteValue - 1];
+                        renderer.sprite = sprites[spriteValue - tileOffset];
                         BoxCollider2D collider = tempSprite.AddComponent<BoxCollider2D>();
                         Rigidbody2D rb = tempSprite.AddComponent<Rigidbody2D>();
                         rb.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -293,7 +298,7 @@ public class LoadTiles : MonoBehaviour {
                     {
                         GameObject tempSprite = new GameObject("test");
                         SpriteRenderer renderer = tempSprite.AddComponent<SpriteRenderer>();
-                        renderer.sprite = sprites[spriteValue - 1];
+                        renderer.sprite = sprites[spriteValue - tileOffset];
 
                         float locationX = tileWidth * mapLocHorz;
                         float locationY = tileHeight * mapLocVert;

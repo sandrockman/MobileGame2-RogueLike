@@ -15,7 +15,7 @@ public class ZoomGesture : MonoBehaviour {
     public Camera myCamera;
     public float zoom = 5f;
     public float minZoom = 10f;
-    public float maxZoom = 70f;
+    public float maxZoom = 40f;
 
     private float angle;
 	
