@@ -159,7 +159,7 @@ public class LoadTiles : MonoBehaviour {
                         GameObject tempSprite = new GameObject("test");
                         tempSprite.tag = "Obstacle";
                         SpriteRenderer renderer = tempSprite.AddComponent<SpriteRenderer>();
-                        renderer.sprite = sprites[spriteValue - 1];
+                        renderer.sprite = sprites[spriteValue - tileOffset];
                         BoxCollider2D collider = tempSprite.AddComponent<BoxCollider2D>();
                         Rigidbody2D rb = tempSprite.AddComponent<Rigidbody2D>();
                         rb.constraints = RigidbodyConstraints2D.FreezeAll;

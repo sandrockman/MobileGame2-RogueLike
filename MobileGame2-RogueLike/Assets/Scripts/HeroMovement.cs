@@ -118,7 +118,7 @@ public class HeroMovement : MonoBehaviour {
     {
         if (Input.touchCount == 1)
         {
-            FireAway();
+            //FireAway();
             if (Input.GetTouch(0).phase == TouchPhase.Began)
             {
                 vectorStart = Input.GetTouch(0).position;
