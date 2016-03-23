@@ -255,4 +255,8 @@ public class HeroMovement : MonoBehaviour {
                 break;
         }
     }
+    IEnumerator JesseOwens(SwipeMove moveDir)
+    {
+        
+    }
 }
