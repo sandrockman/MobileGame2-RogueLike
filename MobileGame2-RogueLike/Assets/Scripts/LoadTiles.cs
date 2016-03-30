@@ -11,6 +11,7 @@ public class LoadTiles : MonoBehaviour {
     public GameObject tempCube;
 
     private Sprite[] sprites;
+    private Sprite[] exitSprites;
     public int spriteMapID;
     //private [] effects;
     private int[] id;
@@ -70,6 +71,10 @@ public class LoadTiles : MonoBehaviour {
         //Maneuver the camera
         //Camera.main.transform.position = new Vector3(9.9f, -9.9f, 10f);
         //Camera.main.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+
+        //Collect "Exit" tiles
+        XmlNodeList tilePropList= xmlDoc.SelectSingleNode("map").SelectSingleNode("tileset").SelectNodes("tile");
+
 
         XmlNodeList layerNames = xmlDoc.GetElementsByTagName("layer");
         Debug.Log(layerNames.Count);

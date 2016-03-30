@@ -11,17 +11,22 @@ public class HeroMovement : MonoBehaviour {
     float orbSpeed = 20f;
 
     bool left, right, up, down;
+
+    bool isSwipeWalking;
+    public float timeWalking = 0.33f;
+
     Animator animator;
 
     private Vector2 vectorStart;
     private Vector2 vectorEnd;
     private float swipeMag;
-    public float swipeComfortZone = 5f;
+    public float swipeComfortZone = 8f;
+    private SwipeMove moveDir;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 
-        left = right = up = down = false;
+        left = right = up = down = isSwipeWalking = false;
         animator = GetComponent<Animator>();
         orb = Resources.Load("Orb") as GameObject;
 	}
@@ -51,6 +56,11 @@ public class HeroMovement : MonoBehaviour {
 	void FixedUpdate () {
         MoveCharacter();
         TouchMove();
+        if(isSwipeWalking)
+        {
+            //Debug.Log("Swipe Walking");
+            SwipeWalk();
+        }
 	}
 
     void MoveCharacter()
@@ -202,9 +212,10 @@ public class HeroMovement : MonoBehaviour {
         }
     }
 
-    void RunInSwipe(SwipeMove moveDir)
+    void RunInSwipe(SwipeMove moveD)
     {
-        switch(moveDir)
+        Debug.Log("Run in swipe");
+        switch(moveD)
         {
             case SwipeMove.DOWN:
                 animator.SetBool("Left", false);
@@ -215,7 +226,9 @@ public class HeroMovement : MonoBehaviour {
                 left = up = right = false;
                 down = true;
 
-                transform.Translate(Vector3.down * moveSpeed * Time.deltaTime);
+                moveDir = moveD;
+                StartCoroutine("JesseOwens");
+                //transform.Translate(Vector3.down * moveSpeed * Time.deltaTime);
                 break;
             case SwipeMove.LEFT:
                 animator.SetBool("Left", true);
@@ -226,7 +239,9 @@ public class HeroMovement : MonoBehaviour {
                 right = up = down = false;
                 left = true;
 
-                transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
+                moveDir = moveD;
+                StartCoroutine("JesseOwens");
+                //transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
                 break;
             case SwipeMove.RIGHT:
                 animator.SetBool("Left", false);
@@ -237,7 +252,9 @@ public class HeroMovement : MonoBehaviour {
                 left = up = down = false;
                 right = true;
 
-                transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+                moveDir = moveD;
+                StartCoroutine("JesseOwens");
+                //transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
                 break;
             case SwipeMove.UP:
                 animator.SetBool("Left", false);
@@ -248,15 +265,41 @@ public class HeroMovement : MonoBehaviour {
                 left = right = down = false;
                 up = true;
 
-                transform.Translate(Vector3.up * moveSpeed * Time.deltaTime);
+                moveDir = moveD;
+                StartCoroutine("JesseOwens");
+                //transform.Translate(Vector3.up * moveSpeed * Time.deltaTime);
                 break;
             default:
                 Debug.Log("Error in Swipe Run.");
                 break;
         }
     }
-    IEnumerator JesseOwens(SwipeMove moveDir)
+    IEnumerator JesseOwens()
     {
-        
+        isSwipeWalking = true;
+        yield return new WaitForSeconds(timeWalking);
+        isSwipeWalking = false;
+    }
+
+    void SwipeWalk()
+    {
+        switch(moveDir)
+        {
+            case SwipeMove.DOWN:
+                transform.Translate(Vector3.down * moveSpeed * Time.deltaTime);
+                break;
+            case SwipeMove.LEFT:
+                transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
+                break;
+            case SwipeMove.RIGHT:
+                transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+                break;
+            case SwipeMove.UP:
+                transform.Translate(Vector3.up * moveSpeed * Time.deltaTime);
+                break;
+            default:
+                break;
+        }
+
     }
 }
