@@ -178,7 +178,7 @@ MonoBehaviour:
   mapInformation:
   - {fileID: 4900000, guid: babb71179356e264baa04b09a150dd02, type: 3}
   - {fileID: 4900000, guid: cb4e9c10a8ae2b64287b49350402f06e, type: 3}
-  - {fileID: 4900000, guid: e286721c3c8bb554faea973d9064882c, type: 3}
+  - {fileID: 4900000, guid: e51230e4681d3aa48b36a59828edf8c7, type: 3}
   tempCube: {fileID: 124686, guid: dbc682b09aa60e841a04ad81942ea906, type: 2}
   spriteMapID: 0
 --- !u!81 &949168738
@@ -222,7 +222,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 3.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

@@ -35,7 +35,7 @@ public class CameraScreen : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         transform.Translate(hMovement, vMovement, 0);
-
+        /*
         //if there are two touches on the device
         if(Input.touchCount == 2)
         {
@@ -75,7 +75,7 @@ public class CameraScreen : MonoBehaviour {
 
                 cameraMoveSpeed = cameraMove * myCamera.fieldOfView;
             }
-        }
+        }//*/
 
         //Move the camera via acceleration
         float tempX = (float)System.Math.Round(Input.acceleration.x, 2);

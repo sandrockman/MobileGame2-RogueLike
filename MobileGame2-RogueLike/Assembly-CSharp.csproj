@@ -61,13 +61,13 @@
      <Compile Include="Assets\Scripts\SpawnEnemy.cs" />
      <Compile Include="Assets\Scripts\ZoomGesture.cs" />
      <None Include="Assets\Resources\Level2.xml" />
-     <None Include="Assets\roguelike-cave-pack\Spritesheet\spritesheetInfo.txt" />
+     <None Include="Assets\roguelike-cave-pack\License.txt" />
+     <None Include="Assets\Resources\newLevel.xml" />
      <None Include="Assets\Resources\Level1.xml" />
      <None Include="Assets\Resources\CDCatalog.xml" />
      <None Include="Assets\Resources\productListing.xml" />
+     <None Include="Assets\roguelike-cave-pack\Spritesheet\spritesheetInfo.txt" />
      <None Include="Assets\kenneyrpgpack\license.txt" />
-     <None Include="Assets\Resources\newLevel.xml" />
-     <None Include="Assets\roguelike-cave-pack\License.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

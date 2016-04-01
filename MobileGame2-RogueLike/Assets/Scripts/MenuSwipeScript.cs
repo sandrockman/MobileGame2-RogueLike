@@ -4,6 +4,7 @@ using System.Collections;
 public class MenuSwipeScript : MonoBehaviour {
 
     enum SwipeMove { LEFT, RIGHT };
+    enum MenuList { MENU, OPTIONS, CREDITS };
 
     public Canvas menuCanvas;
     public Canvas optionsCanvas;
@@ -12,6 +13,7 @@ public class MenuSwipeScript : MonoBehaviour {
     public float scrollSpeed = 5;
     float screenWidth;
     bool canSwapMenus;
+    MenuList currentMenu;
 
     private Vector2 v2Current;
     private Vector2 v2Previous;
@@ -25,6 +27,8 @@ public class MenuSwipeScript : MonoBehaviour {
     void Start () {
         optionsCanvas.enabled = false;
         creditsCanvas.enabled = false;
+        menuCanvas.enabled = true;
+        currentMenu = MenuList.MENU;
         menuCanvas.sortingOrder = 1;
         screenWidth = Screen.width / 2;
         canSwapMenus = true;
@@ -88,8 +92,30 @@ public class MenuSwipeScript : MonoBehaviour {
         switch(dir)
         {
             case SwipeMove.LEFT:
+                switch(currentMenu)
+                {
+                    case MenuList.MENU:
+                        break;
+                    case MenuList.CREDITS:
+                        break;
+                    case MenuList.OPTIONS:
+                        break;
+                    default:
+                        break;
+                }
                 break;
             case SwipeMove.RIGHT:
+                switch (currentMenu)
+                {
+                    case MenuList.MENU:
+                        break;
+                    case MenuList.CREDITS:
+                        break;
+                    case MenuList.OPTIONS:
+                        break;
+                    default:
+                        break;
+                }
                 break;
             default:
                 break;
