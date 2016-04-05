@@ -22,6 +22,10 @@ public class HeroMovement : MonoBehaviour {
     private float swipeMag;
     public float swipeComfortZone = 8f;
     private SwipeMove moveDir;
+    public AudioClip[] fireSounds;
+    public AudioClip hurtSound;
+    private new AudioSource audio;
+
 
     // Use this for initialization
     void Start () {
@@ -29,11 +33,12 @@ public class HeroMovement : MonoBehaviour {
         left = right = up = down = isSwipeWalking = false;
         animator = GetComponent<Animator>();
         orb = Resources.Load("Orb") as GameObject;
-	}
+        audio = GetComponent<AudioSource>();
+    }
 	
     void Update()
     {
-        if(Input.GetButtonDown("Fire1"))
+        if(Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Space))
         {
             FireAway();
         }
@@ -210,6 +215,9 @@ public class HeroMovement : MonoBehaviour {
             orbRigidbody.velocity = new Vector2(0f, -orbSpeed);
 
         }
+        int soundChoose = Random.Range(0, fireSounds.Length);
+        audio.clip = fireSounds[soundChoose];
+        audio.Play();
     }
 
     void RunInSwipe(SwipeMove moveD)

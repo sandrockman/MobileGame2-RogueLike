@@ -53,7 +53,7 @@ public class LoadTiles : MonoBehaviour {
 
         XmlDocument xmlDoc = new XmlDocument();
         //xmlDoc.LoadXml(mapInformation.text);
-
+        Camera.main.backgroundColor = new Color(0.553f, 0.769f, 0.208f, 0.020f);
         switch (mapNumber)
         {
             case 0:
@@ -64,6 +64,9 @@ public class LoadTiles : MonoBehaviour {
                 break;
             case 2:
                 xmlDoc.LoadXml(mapInformation[2].text);
+                //color rgba elements must be set from 0 to 1.
+                //below translates to (168, 182, 183, 5)--a type of gray.
+                Camera.main.backgroundColor = new Color(0.659f, 0.714f, 0.718f, 0.020f);
                 break;
             default:
                 break;

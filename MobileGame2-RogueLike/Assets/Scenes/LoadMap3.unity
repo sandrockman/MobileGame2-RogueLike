@@ -142,7 +142,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!1 &949168736
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,9 +176,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapInformation:
-  - {fileID: 4900000, guid: babb71179356e264baa04b09a150dd02, type: 3}
-  - {fileID: 4900000, guid: cb4e9c10a8ae2b64287b49350402f06e, type: 3}
-  - {fileID: 4900000, guid: e51230e4681d3aa48b36a59828edf8c7, type: 3}
+  - {fileID: 4900000, guid: 5ae8c4f8d81906b40a32ce1ee7c78b60, type: 3}
+  - {fileID: 4900000, guid: c29b6a3b9d9f11a45b293dedc7fa3998, type: 3}
+  - {fileID: 4900000, guid: 08408991e4ca8d14cab9994e34756feb, type: 3}
   tempCube: {fileID: 124686, guid: dbc682b09aa60e841a04ad81942ea906, type: 2}
   spriteMapID: 0
 --- !u!81 &949168738
@@ -211,7 +211,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
+  m_BackGroundColor: {r: 0.5529412, g: 0.76862746, b: 0.20784314, a: 0.019607844}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -243,10 +243,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 949168736}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.49, y: 2.55, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1680202142}
   m_RootOrder: 0
 --- !u!114 &949168743
 MonoBehaviour:
@@ -268,6 +268,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11493084, guid: 0fca8c6fdb078534aa74c6634504bc6e, type: 2}
+      propertyPath: fireSounds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 475424, guid: 0fca8c6fdb078534aa74c6634504bc6e, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0.72
@@ -298,8 +302,28 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 475424, guid: 0fca8c6fdb078534aa74c6634504bc6e, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11493084, guid: 0fca8c6fdb078534aa74c6634504bc6e, type: 2}
+      propertyPath: fireSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 2544c80d4f8225348bda5e6a697d3420, type: 3}
+    - target: {fileID: 11493084, guid: 0fca8c6fdb078534aa74c6634504bc6e, type: 2}
+      propertyPath: fireSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: df4e048e99681af468d6eec159cfb889, type: 3}
+    - target: {fileID: 11493084, guid: 0fca8c6fdb078534aa74c6634504bc6e, type: 2}
+      propertyPath: fireSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5ead79447671b06489c4a5979cb6d306, type: 3}
+    - target: {fileID: 11493084, guid: 0fca8c6fdb078534aa74c6634504bc6e, type: 2}
+      propertyPath: hurtSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 78932b8a170718b498b970d1244e2921, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fca8c6fdb078534aa74c6634504bc6e, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &1680202142 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 475424, guid: 0fca8c6fdb078534aa74c6634504bc6e, type: 2}
+  m_PrefabInternal: {fileID: 1288706841}
